@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GreenSwap UAE — Swap. Save. Sustain.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--green:#2d6a4f;--gl:#52b788;--gp:#d8f3dc;--cream:#fefae0;--terra:#bc6c25;--dark:#1a1a1a;--mid:#555;--white:#fff;--bdr:rgba(45,106,79,0.15)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(254,250,224,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr)}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--green);cursor:pointer}.logo span{color:var(--terra)}
+.navul{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.navul a{font-size:0.85rem;font-weight:500;color:var(--mid);cursor:pointer;text-decoration:none;transition:color .2s}.navul a:hover{color:var(--green)}
+.ncta{background:var(--green)!important;color:var(--white)!important;padding:.5rem 1.2rem!important;border-radius:100px}
+.ncta:hover{background:var(--terra)!important}
+.nadm{background:var(--terra)!important;color:var(--white)!important;padding:.5rem 1.1rem!important;border-radius:100px;font-size:.78rem!important}
+.nadm:hover{background:#9a5520!important}
+.pg{display:none;min-height:100vh;padding-top:72px}
+.pg.on{display:block}
+#home{display:none;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 4rem;background:linear-gradient(160deg,var(--cream),var(--gp));overflow:hidden;padding-top:72px}
+#home.on{display:flex}
+.htag{display:inline-block;background:var(--green);color:var(--white);font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem}
+.hh1{font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1;letter-spacing:-2px;margin-bottom:1.5rem}
+.hh1 em{font-style:italic;color:var(--green)}
+.hsub{font-size:1.05rem;color:var(--mid);max-width:500px;line-height:1.7;margin-bottom:2.5rem}
+.hbtns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.bp{background:var(--green);color:var(--white);padding:.85rem 1.8rem;border-radius:100px;font-weight:600;font-size:.95rem;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s}
+.bp:hover{background:var(--terra);transform:translateY(-2px);box-shadow:0 8px 24px rgba(188,108,37,.3)}
+.bs{background:transparent;color:var(--green);padding:.85rem 1.8rem;border-radius:100px;font-weight:600;font-size:.95rem;border:2px solid var(--green);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s}
+.bs:hover{background:var(--green);color:var(--white);transform:translateY(-2px)}
+.stats{display:flex;flex-wrap:wrap;margin-top:4rem;width:100%;max-width:800px;border:1px solid var(--bdr);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.6)}
+.stat{flex:1;min-width:160px;padding:1.4rem 2rem;text-align:center;border-right:1px solid var(--bdr)}.stat:last-child{border-right:none}
+.sn{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--green)}
+.sl{font-size:.78rem;color:var(--mid);margin-top:.3rem;font-weight:500}
+.leaves{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;font-size:2rem;opacity:.15;animation:leaffloat linear infinite}
+@keyframes leaffloat{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:.15}90%{opacity:.15}100%{transform:translateY(-10vh) rotate(360deg);opacity:0}}
+.sh{text-align:center;padding:4.5rem 2rem 2.5rem}
+.stag{display:inline-block;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--terra);margin-bottom:.8rem}
+.sti{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-1px}
+.sti em{font-style:italic;color:var(--green)}
+.ssub{margin-top:.8rem;color:var(--mid);font-size:.98rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+/* SHOP */
+.fbar{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;padding:0 2rem 2rem}
+.fb{padding:.45rem 1.1rem;border-radius:100px;border:1.5px solid var(--bdr);background:transparent;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--mid)}
+.fb.on,.fb:hover{background:var(--green);border-color:var(--green);color:var(--white)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.4rem;padding:0 3rem;max-width:1200px;margin:0 auto}
+.pc{background:var(--white);border-radius:20px;overflow:hidden;border:1px solid var(--bdr);transition:transform .3s,box-shadow .3s}
+.pc:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(45,106,79,.12)}
+.pimg{height:190px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+.pbadge{position:absolute;top:12px;right:12px;background:var(--terra);color:var(--white);font-size:.65rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px}
+.pi{padding:1.1rem 1.4rem 1.4rem}
+.pcat{font-size:.7rem;font-family:'DM Mono',monospace;color:var(--terra);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.4rem}
+.pname{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.pdesc{font-size:.82rem;color:var(--mid);margin-bottom:.9rem;line-height:1.5}
+.pfoot{display:flex;align-items:center;justify-content:space-between}
+.pprice{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--green)}
+.pprice span{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--mid);font-weight:400}
+.bc{background:var(--gp);color:var(--green);border:none;padding:.45rem .9rem;border-radius:100px;font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif}
+.bc:hover{background:var(--green);color:var(--white)}
+.empty{text-align:center;padding:4rem 2rem;color:var(--mid);grid-column:1/-1}
+.empty .ei{font-size:3.5rem;margin-bottom:1rem;opacity:.35}
+.empty h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dark);margin-bottom:.5rem}
+.empty p{font-size:.9rem;line-height:1.6}
+/* SELL */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;max-width:1000px;margin:0 auto;padding:0 2rem}
+.card{background:var(--white);border-radius:24px;padding:2.2rem;border:1px solid var(--bdr)}
+.card h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:1.4rem}
+.ri{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.1rem}
+.ric{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ric.y{background:var(--gp)}.ric.n{background:#ffe5e5}
+.rt strong{display:block;font-size:.9rem;margin-bottom:.2rem}
+.rt p{font-size:.82rem;color:var(--mid);line-height:1.5}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--mid);margin-bottom:.35rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.7rem .95rem;border:1.5px solid var(--bdr);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--dark);background:var(--cream);outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green)}
+.upz{border:2px dashed var(--gl);border-radius:14px;padding:1.8rem;text-align:center;cursor:pointer;background:var(--gp);transition:background .2s}
+.upz:hover{background:rgba(82,183,136,.15)}
+.upz .ui{font-size:2rem;margin-bottom:.4rem}
+.upz p{font-size:.85rem;color:var(--mid)}
+.upz strong{color:var(--green)}
+.walt{text-align:center;margin-top:1.3rem;padding:.9rem;background:#e8f5e9;border-radius:12px;font-size:.85rem;color:var(--mid)}
+.walt a{color:var(--green);font-weight:600}
+/* EVENTS */
+.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto;padding:0 2rem}
+.ec{background:var(--white);border-radius:24px;overflow:hidden;border:1px solid var(--bdr);transition:transform .3s,box-shadow .3s}
+.ec:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(45,106,79,.1)}
+.eh{padding:1.4rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--bdr)}
+.edb{color:var(--white);border-radius:16px;padding:.65rem .95rem;text-align:center;min-width:54px;flex-shrink:0}
+.ed{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;line-height:1}
+.em{font-size:.68rem;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;opacity:.85}
+.emeta h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.2rem}
+.emeta p{font-size:.8rem;color:var(--mid)}
+.eb{padding:1.1rem 1.4rem 1.4rem}
+.edet{display:flex;gap:.6rem;align-items:center;font-size:.83rem;color:var(--mid);margin-bottom:.55rem}
+.espots{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--bdr)}
+.sbar{flex:1;height:6px;background:var(--gp);border-radius:100px;margin:0 .9rem;overflow:hidden}
+.sfill{height:100%;background:var(--green);border-radius:100px}
+.hswap{max-width:800px;margin:2.5rem auto 0;padding:0 2rem}
+.hswapb{background:var(--green);border-radius:24px;padding:2.2rem;color:var(--white);text-align:center}
+.hswapb h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:1.8rem}
+.steps{display:flex;flex-wrap:wrap}
+.step{flex:1;min-width:150px;text-align:center}
+.stepn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;margin:0 auto .7rem;border:2px solid rgba(255,255,255,.4)}
+.step p{font-size:.85rem;opacity:.9;line-height:1.5}
+.regwrap{max-width:580px;margin:2.2rem auto 0;padding:0 2rem}
+.regbox{background:var(--white);border-radius:24px;padding:2.2rem;border:1px solid var(--bdr)}
+.regbox h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:1.4rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+/* ABOUT */
+.aboutlay{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;max-width:1000px;margin:0 auto;padding:0 2rem;align-items:start}
+.avatar{background:var(--gp);border-radius:28px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:5.5rem;border:1px solid var(--bdr)}
+.aboutc h3{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;margin-bottom:1.1rem;letter-spacing:-.5px}
+.aboutc p{font-size:.95rem;color:var(--mid);line-height:1.8;margin-bottom:1rem}
+.icards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.8rem}
+.ic{color:var(--white);border-radius:18px;padding:1.3rem 1.1rem;text-align:center}
+.in{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;line-height:1}
+.il{font-size:.75rem;opacity:.85;margin-top:.35rem;line-height:1.4}
+/* CONTACT */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:900px;margin:0 auto;padding:0 2rem}
+.cc{background:var(--white);border-radius:22px;padding:1.8rem;border:1px solid var(--bdr);display:flex;gap:1.1rem;align-items:flex-start;transition:transform .25s,box-shadow .25s;text-decoration:none;color:inherit}
+.cc:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(45,106,79,.1)}
+.cicon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.cw{background:#dcfce7}.ci{background:#fce7f3}.ce{background:#fef9c3}.ct{background:#f0f4ff}
+.cc strong{display:block;font-size:.95rem;font-weight:600;margin-bottom:.25rem}
+.cc p{font-size:.82rem;color:var(--mid);line-height:1.5}
+/* ADMIN */
+.alog{max-width:420px;margin:0 auto;padding:0 2rem}
+.alogb{background:var(--white);border-radius:24px;padding:2.4rem;border:1px solid var(--bdr);text-align:center}
+.alogb .li{font-size:3rem;margin-bottom:1rem}
+.alogb h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;margin-bottom:.5rem}
+.alogb p{font-size:.85rem;color:var(--mid);margin-bottom:1.4rem}
+.pwerr{color:#b91c1c;font-size:.82rem;margin-top:.5rem;display:none}
+.apanel{display:none;max-width:1100px;margin:0 auto;padding:0 2rem}
+.apanel.on{display:block}
+.atbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;flex-wrap:wrap;gap:1rem}
+.atbar h3{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900}
+.bdel{background:#fee2e2;color:#b91c1c;border:none;padding:.5rem 1.1rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s}
+.bdel:hover{background:#b91c1c;color:var(--white)}
+.bsold{background:#dcfce7;color:#166534;border:none;padding:.5rem 1.1rem;border-radius:100px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s}
+.bsold:hover{background:#166534;color:var(--white)}
+.addbox{background:var(--white);border-radius:22px;padding:1.9rem;border:1px solid var(--bdr);margin-bottom:1.8rem}
+.addbox h4{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:1.3rem}
+.agrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.alist{display:flex;flex-direction:column;gap:1rem}
+.arow{background:var(--white);border-radius:14px;padding:1.1rem 1.4rem;border:1px solid var(--bdr);display:flex;align-items:center;gap:1.1rem}
+.aremoji{font-size:1.9rem;width:42px;text-align:center;flex-shrink:0}
+.arinfo{flex:1}
+.arinfo strong{display:block;font-size:.92rem;font-weight:600}
+.arinfo span{font-size:.78rem;color:var(--mid)}
+.arprice{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:900;color:var(--green);margin-right:.5rem;white-space:nowrap}
+.aempty{text-align:center;padding:2.5rem;color:var(--mid);font-size:.9rem;background:var(--white);border-radius:14px;border:1px dashed var(--bdr)}
+/* MODAL */
+.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;align-items:center;justify-content:center}
+.mov.on{display:flex}
+.mbox{background:var(--white);border-radius:22px;padding:2.4rem;max-width:400px;width:90%;text-align:center}
+.mbox h3{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;margin-bottom:.7rem}
+.mbox p{color:var(--mid);font-size:.9rem;line-height:1.6;margin-bottom:1.4rem}
+/* TOAST */
+.toast{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--green);color:var(--white);padding:.9rem 1.4rem;border-radius:14px;font-size:.88rem;font-weight:500;z-index:9998;transform:translateY(100px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.on{transform:translateY(0);opacity:1}
+/* FOOTER */
+footer{background:var(--dark);color:var(--white);text-align:center;padding:2.8rem 2rem}
+footer .flogo{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:var(--gl)}
+footer p{font-size:.82rem;opacity:.45;margin-top:.7rem}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.slideout{animation:slideout .35s ease forwards;pointer-events:none}
+@keyframes slideout{to{opacity:0;transform:scale(.94) translateY(-5px);max-height:0;padding:0;margin:0;border-width:0;overflow:hidden}}
+@media(max-width:768px){
+  nav{padding:1rem 1.2rem}.navul{display:none}
+  .twocol,.aboutlay,.cgrid{grid-template-columns:1fr}
+  .frow,.agrid{grid-template-columns:1fr}
+  .icards{grid-template-columns:1fr 1fr}
+  .pgrid{padding:0 1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="SP('home')">Green<span>Swap</span> UAE</div>
+  <ul class="navul">
+    <li><a onclick="SP('home')">Home</a></li>
+    <li><a onclick="SP('shop')">Shop</a></li>
+    <li><a onclick="SP('sell')">Sell</a></li>
+    <li><a onclick="SP('events')">Events</a></li>
+    <li><a onclick="SP('about')">About</a></li>
+    <li><a onclick="SP('contact')" class="ncta">Contact</a></li>
+    <li><a onclick="SP('admin')" class="nadm">🔒 Admin</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="on">
+  <div class="leaves" id="leaves"></div>
+  <div class="htag">🌱 UAE's Student-Run Swap Marketplace</div>
+  <h1 class="hh1">Swap. Save.<br><em>Sustain.</em></h1>
+  <p class="hsub">Second-hand clothes, books, and school items — bought, sold, and swapped by students, for students across the UAE.</p>
+  <div class="hbtns">
+    <button class="bp" onclick="SP('shop')">Browse the Shop →</button>
+    <button class="bs" onclick="SP('events')">View Swap Events</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="sn">75+</div><div class="sl">Items Reused</div></div>
+    <div class="stat"><div class="sn">20+</div><div class="sl">Families Helped</div></div>
+    <div class="stat"><div class="sn">38 kg</div><div class="sl">Saved from Landfill</div></div>
+    <div class="stat"><div class="sn">3</div><div class="sl">Swap Events Held</div></div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="pg">
+  <div class="sh"><div class="stag">🛍️ Browse</div><h2 class="sti">The <em>Shop</em></h2><p class="ssub">All items are pre-loved, clean, and in great condition. DM to reserve!</p></div>
+  <div class="fbar">
+    <button class="fb on" onclick="FP('all',this)">All Items</button>
+    <button class="fb" onclick="FP('clothes',this)">👕 Clothes</button>
+    <button class="fb" onclick="FP('books',this)">📚 Books</button>
+    <button class="fb" onclick="FP('school',this)">🎒 School</button>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+  <div style="padding-bottom:5rem"></div>
+</section>
+
+<!-- SELL -->
+<section id="sell" class="pg">
+  <div class="sh"><div class="stag">📦 List Your Items</div><h2 class="sti">Sell With <em>Us</em></h2><p class="ssub">Got items you no longer need? List them and earn cash while helping the planet.</p></div>
+  <div class="twocol">
+    <div class="card">
+      <h3>📋 Acceptance Rules</h3>
+      <div class="ri"><div class="ric y">✅</div><div class="rt"><strong>Clean &amp; washed items only</strong><p>All clothing must be freshly washed and ready to wear.</p></div></div>
+      <div class="ri"><div class="ric y">✅</div><div class="rt"><strong>Good condition</strong><p>No tears, heavy stains, or broken zips. Small signs of wear are okay.</p></div></div>
+      <div class="ri"><div class="ric y">✅</div><div class="rt"><strong>Genuine brands only</strong><p>No fake or counterfeit branded items accepted.</p></div></div>
+      <div class="ri"><div class="ric n">❌</div><div class="rt"><strong>No damaged items</strong><p>Items with holes, broken seams, or defects will be returned.</p></div></div>
+      <div class="ri"><div class="ric n">❌</div><div class="rt"><strong>No fake brands</strong><p>Counterfeit products are not accepted under any circumstances.</p></div></div>
+      <div style="margin-top:1.5rem;padding:1.1rem;background:var(--gp);border-radius:14px"><p style="font-size:.85rem;color:var(--green);font-weight:600;margin-bottom:.3rem">💰 How You Get Paid</p><p style="font-size:.82rem;color:var(--mid);line-height:1.5">Once your item sells, you'll receive <strong>70% of the sale price</strong> via cash or bank transfer. We keep 30% to run the platform and events.</p></div>
+    </div>
+    <div class="card">
+      <h3>📤 Submit Your Item</h3>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="e.g. Sara Al Mansouri"/></div>
+      <div class="fg"><label>WhatsApp Number</label><input type="tel" placeholder="+971 50 123 4567"/></div>
+      <div class="fg"><label>Item Category</label><select><option>Choose a category...</option><option>👕 Clothes – Kids</option><option>👗 Clothes – Teens</option><option>📚 Books – School Textbooks</option><option>📖 Books – Fiction / Novels</option><option>🎒 School Supplies</option><option>👟 Shoes</option><option>🧸 Toys &amp; Games</option></select></div>
+      <div class="fg"><label>Item Description</label><textarea rows="3" placeholder="Brand, size, condition, reason for selling..."></textarea></div>
+      <div class="fg"><label>Your Asking Price (AED)</label><input type="number" placeholder="e.g. 25"/></div>
+      <div class="fg"><label>Upload Photos</label>
+        <div class="upz" onclick="document.getElementById('ufi').click()"><div class="ui">📸</div><p><strong>Click to upload photos</strong><br>or drag and drop here</p><input type="file" id="ufi" multiple accept="image/*" style="display:none"/></div>
+      </div>
+      <button class="bp" style="width:100%;margin-top:.4rem" onclick="submitSell()">Submit Item →</button>
+      <div class="walt">📱 Prefer to send photos directly?<br><a href="https://wa.me/9710507322865?text=Hi!%20I%20want%20to%20sell%20an%20item%20on%20GreenSwap%20UAE" target="_blank">Send via WhatsApp</a> or <a href="https://instagram.com/greenswapuae" target="_blank">DM on Instagram</a></div>
+    </div>
+  </div>
+  <div style="padding-bottom:5rem"></div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="pg">
+  <div class="sh"><div class="stag">📅 Upcoming</div><h2 class="sti">Swap <em>Events</em></h2><p class="ssub">Bring items, earn tokens, take home something new.</p></div>
+  <div class="egrid">
+    <div class="ec">
+      <div class="eh"><div class="edb" style="background:var(--green)"><div class="ed">20</div><div class="em">Apr</div></div><div class="emeta"><h4>School Book Swap</h4><p>📍 Library Hall, Dubai Academy</p></div></div>
+      <div class="eb"><div class="edet"><span>🕒</span><span>3:00 PM – 5:00 PM</span></div><div class="edet"><span>🎒</span><span>Books, textbooks, novels</span></div><div class="edet"><span>💰</span><span>15 AED entry (cash at door)</span></div>
+      <div class="espots"><span style="font-size:.78rem;color:var(--mid)">14/30 spots</span><div class="sbar"><div class="sfill" style="width:47%"></div></div><button class="bc" onclick="regEvent('School Book Swap – 20 April')">Register</button></div></div>
+    </div>
+    <div class="ec">
+      <div class="eh"><div class="edb" style="background:var(--terra)"><div class="ed">10</div><div class="em">May</div></div><div class="emeta"><h4>Kids Clothing Swap</h4><p>📍 Community Centre, Sharjah</p></div></div>
+      <div class="eb"><div class="edet"><span>🕒</span><span>10:00 AM – 1:00 PM</span></div><div class="edet"><span>👕</span><span>Kids &amp; teens clothes, shoes</span></div><div class="edet"><span>💰</span><span>20 AED entry (cash at door)</span></div>
+      <div class="espots"><span style="font-size:.78rem;color:var(--mid)">8/40 spots</span><div class="sbar"><div class="sfill" style="width:20%"></div></div><button class="bc" onclick="regEvent('Kids Clothing Swap – 10 May')">Register</button></div></div>
+    </div>
+    <div class="ec">
+      <div class="eh"><div class="edb" style="background:#6b63d0"><div class="ed">2</div><div class="em">Jun</div></div><div class="emeta"><h4>End-of-Year Mega Swap</h4><p>📍 School Courtyard, Abu Dhabi</p></div></div>
+      <div class="eb"><div class="edet"><span>🕒</span><span>9:00 AM – 3:00 PM</span></div><div class="edet"><span>🎉</span><span>Clothes, books, toys, games</span></div><div class="edet"><span>💰</span><span>10 AED entry (cash at door)</span></div>
+      <div class="espots"><span style="font-size:.78rem;color:var(--mid)">2/80 spots</span><div class="sbar"><div class="sfill" style="width:3%;background:#6b63d0"></div></div><button class="bc" onclick="regEvent('End-of-Year Mega Swap – 2 June')">Register</button></div></div>
+    </div>
+  </div>
+  <div class="hswap"><div class="hswapb"><h3>🪙 How Swap Tokens Work</h3><div class="steps"><div class="step"><div class="stepn">1</div><p>Bring <strong>1–10 items</strong> in good condition</p></div><div class="step"><div class="stepn">2</div><p>Each accepted item earns you <strong>1 swap token</strong></p></div><div class="step"><div class="stepn">3</div><p>Use tokens to <strong>"buy" other items</strong> at the event</p></div><div class="step"><div class="stepn">4</div><p>Leave with something new — <strong>zero extra cost!</strong></p></div></div></div></div>
+  <div class="regwrap"><div class="regbox"><h3>✍️ Register for an Event</h3>
+    <div class="frow"><div class="fg"><label>Full Name</label><input type="text" id="rname" placeholder="Your name"/></div><div class="fg"><label>Age / Grade</label><input type="text" id="rage" placeholder="e.g. Grade 9"/></div></div>
+    <div class="fg"><label>School</label><input type="text" id="rschool" placeholder="School name &amp; emirate"/></div>
+    <div class="fg"><label>Which Event?</label><select id="revent"><option>School Book Swap – 20 April</option><option>Kids Clothing Swap – 10 May</option><option>End-of-Year Mega Swap – 2 June</option></select></div>
+    <div class="fg"><label>Items You Plan to Bring</label><textarea id="ritems" rows="2" placeholder="e.g. 3 textbooks, 2 t-shirts..."></textarea></div>
+    <button class="bp" style="width:100%" onclick="submitReg()">Reserve My Spot →</button>
+  </div></div>
+  <div style="padding-bottom:5rem"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="pg">
+  <div class="sh"><div class="stag">🌍 Our Mission</div><h2 class="sti">About &amp; <em>Impact</em></h2><p class="ssub">A student on a mission to reduce waste, save money, and build community.</p></div>
+  <div class="aboutlay">
+    <div class="avatar">🌱</div>
+    <div class="aboutc">
+      <h3>Hi, I'm the founder of GreenSwap UAE 👋</h3>
+      <p>I'm a high-school freshman based in the UAE. Growing up here, I noticed how much perfectly good clothing and books ended up in the bin — especially at the end of each school year.</p>
+      <p>I started GreenSwap UAE because I believe we can do better. Every item that's reused is one less item in a landfill, and one more family who doesn't have to pay full price for new things.</p>
+      <p>What began as a small WhatsApp group has grown into pop-up events, an online shop, and a real community of families who care about the planet and their wallets.</p>
+      <p style="font-weight:600;color:var(--green)">This is just the beginning. 🌿</p>
+      <div class="icards">
+        <div class="ic" style="background:var(--green)"><div class="in">75+</div><div class="il">Items Reused So Far</div></div>
+        <div class="ic" style="background:var(--terra)"><div class="in">38 kg</div><div class="il">Saved from Landfill</div></div>
+        <div class="ic" style="background:#6b63d0"><div class="in">20+</div><div class="il">Families Helped</div></div>
+      </div>
+    </div>
+  </div>
+  <div style="padding-bottom:5rem"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="pg">
+  <div class="sh"><div class="stag">💬 Get in Touch</div><h2 class="sti">Say <em>Hello</em></h2><p class="ssub">Message me to buy, sell, or invite me to organise a swap at your school.</p></div>
+  <div class="cgrid">
+    <a class="cc" href="https://wa.me/9710507322865?text=Hi!%20I%20want%20to%20buy%2Fsell%20items%20on%20GreenSwap%20UAE" target="_blank"><div class="cicon cw">💬</div><div><strong>WhatsApp</strong><p>Tap to send a message. Fastest way to reach me!</p></div></a>
+    <a class="cc" href="https://instagram.com/greenswapuae" target="_blank"><div class="cicon ci">📸</div><div><strong>Instagram</strong><p>Follow @greenswapuae for new listings and event updates.</p></div></a>
+    <a class="cc" href="mailto:hello@greenswapuae.com"><div class="cicon ce">✉️</div><div><strong>Email</strong><p>hello@greenswapuae.com — for partnerships and event invites.</p></div></a>
+    <a class="cc" href="https://tiktok.com/@greenswapuae" target="_blank"><div class="cicon ct">🎵</div><div><strong>TikTok</strong><p>Watch swap videos and thrift hauls @greenswapuae.</p></div></a>
+  </div>
+  <div style="text-align:center;margin-top:3rem;padding:0 2rem">
+    <div style="display:inline-block;background:var(--gp);border-radius:20px;padding:1.8rem 2.5rem;max-width:500px">
+      <p style="font-size:1rem;color:var(--green);font-weight:600;margin-bottom:.5rem">🏫 Want a Swap Event at Your School?</p>
+      <p style="font-size:.9rem;color:var(--mid);line-height:1.7">I can come and organise a swap event for your school or community group. Just message me!</p>
+      <a href="https://wa.me/9710507322865?text=Hi!%20I%27d%20like%20to%20invite%20you%20to%20organise%20a%20swap%20event%20at%20my%20school." target="_blank" class="bp" style="margin-top:1.1rem;display:inline-block;text-decoration:none">Invite Me →</a>
+    </div>
+  </div>
+  <div style="padding-bottom:5rem"></div>
+</section>
+
+<!-- ADMIN -->
+<section id="admin" class="pg">
+  <div class="sh"><div class="stag">🔒 Admin Area</div><h2 class="sti">Inventory <em>Manager</em></h2><p class="ssub">Add items, mark them sold, and keep your shop up to date.</p></div>
+  <div class="alog" id="alog">
+    <div class="alogb">
+      <div class="li">🔐</div>
+      <h3>Admin Login</h3>
+      <p>Enter your password to manage the shop.</p>
+      <div class="fg" style="text-align:left"><label>Password</label><input type="password" id="apw" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPw()"/></div>
+      <p class="pwerr" id="pwerr">❌ Incorrect password. Please try again.</p>
+      <button class="bp" style="width:100%;margin-top:.8rem" onclick="checkPw()">Unlock Admin →</button>
+      <p style="font-size:.75rem;color:var(--mid);margin-top:1.4rem;line-height:1.6;opacity:.7">Default password: <strong>greenswap2025</strong><br>Find <code>ADMIN_PW</code> in the HTML to change it.</p>
+    </div>
+  </div>
+  <div class="apanel" id="apanel">
+    <div class="atbar"><h3>📦 Shop Inventory (<span id="icount">0</span> live items)</h3><button class="bdel" onclick="doLogout()">🔒 Lock Admin</button></div>
+    <div class="addbox">
+      <h4>➕ Add New Item to Shop</h4>
+      <div class="agrid">
+        <div class="fg"><label>Item Name</label><input type="text" id="nn" placeholder="e.g. Blue Denim Jacket"/></div>
+        <div class="fg"><label>Category</label><select id="nc"><option value="clothes">👕 Clothes</option><option value="books">📚 Books</option><option value="school">🎒 School</option></select></div>
+        <div class="fg"><label>Price (AED)</label><input type="number" id="np" placeholder="e.g. 40"/></div>
+        <div class="fg"><label>Description</label><input type="text" id="nd" placeholder="Size, brand, condition..."/></div>
+        <div class="fg"><label>Icon</label><select id="ne"><option value="👕">👕 T-shirt</option><option value="👗">👗 Dress</option><option value="👟">👟 Shoes</option><option value="🧥">🧥 Jacket</option><option value="👖">👖 Trousers</option><option value="📚">📚 Books</option><option value="📖">📖 Book</option><option value="🎒">🎒 Backpack</option><option value="✏️">✏️ Art/School</option><option value="🧸">🧸 Toy</option></select></div>
+        <div class="fg"><label>Badge (optional)</label><input type="text" id="nb" placeholder="e.g. New In"/></div>
+      </div>
+      <button class="bp" onclick="addItem()">Add to Shop →</button>
+    </div>
+    <div class="alist" id="alist"></div>
+  </div>
+  <div style="padding-bottom:5rem"></div>
+</section>
+
+<footer><div class="flogo">GreenSwap UAE</div><p>A student-run second-hand marketplace in the UAE 🇦🇪</p><p>Swap. Save. Sustain. 🌱 &nbsp;|&nbsp; © 2025 GreenSwap UAE</p></footer>
+
+<div class="mov" id="modal"><div class="mbox"><div style="font-size:2.8rem;margin-bottom:1rem" id="mi">✅</div><h3 id="mt"></h3><p id="mm"></p><button class="bp" onclick="closeMod()">Close</button></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var ADMIN_PW = 'greenswap2025';
+var items = [];
+var uid = 1;
+var af = 'all';
+var BG = {
+  clothes:['#e8f5e9','#fce7f3','#f3e5f5','#fff3e0'],
+  books:['#fef9c3','#fff3e0','#e8eaf6'],
+  school:['#f0f4ff','#fef9c3','#e8f5e9']
+};
+function rbg(c){var a=BG[c]||['#f5f5f5'];return a[Math.floor(Math.random()*a.length)];}
+
+function SP(id){
+  var all=document.querySelectorAll('section');
+  for(var i=0;i<all.length;i++){all[i].className='pg';}
+  var el=document.getElementById(id);
+  if(id==='home'){el.className='on';}else{el.className='pg on';}
+  window.scrollTo(0,0);
+  if(id==='shop'){renderShop();}
+}
+
+function FP(cat,btn){
+  var btns=document.querySelectorAll('.fb');
+  for(var i=0;i<btns.length;i++){btns[i].classList.remove('on');}
+  btn.classList.add('on');
+  af=cat;
+  renderShop();
+}
+
+function renderShop(){
+  var grid=document.getElementById('pgrid');
+  var list=af==='all'?items:items.filter(function(p){return p.cat===af;});
+  if(!list.length){
+    grid.innerHTML='<div class="empty"><div class="ei">🛍️</div><h3>No items listed yet</h3><p>Check back soon!<br>Want to sell? <a href="#" onclick="SP(\'sell\')" style="color:var(--green);font-weight:600">Submit yours here →</a></p></div>';
+    return;
+  }
+  var html='';
+  for(var i=0;i<list.length;i++){
+    var p=list[i];
+    html+='<div class="pc" id="card-'+p.id+'">';
+    html+='<div class="pimg" style="background:'+p.bg+'"><span>'+p.emoji+'</span>';
+    if(p.badge){html+='<div class="pbadge">'+p.badge+'</div>';}
+    html+='</div><div class="pi"><div class="pcat">'+p.cat+'</div><div class="pname">'+p.name+'</div><div class="pdesc">'+p.desc+'</div>';
+    html+='<div class="pfoot"><div class="pprice">'+p.price+' AED <span>or best offer</span></div>';
+    html+='<button class="bc" onclick="enquire('+p.id+')">Reserve</button></div></div></div>';
+  }
+  grid.innerHTML=html;
+}
+
+function enquire(id){
+  var p=null;for(var i=0;i<items.length;i++){if(items[i].id===id){p=items[i];break;}}
+  if(!p)return;
+  var msg=encodeURIComponent('Hi! I\'d like to reserve "'+p.name+'" listed at '+p.price+' AED on GreenSwap UAE.');
+  showMod('🛍️','Reserve: '+p.name,'We\'ll open WhatsApp so you can confirm. Your item will be held for 24 hours once confirmed.');
+  setTimeout(function(){window.open('https://wa.me/9710507322865?text='+msg,'_blank');},800);
+}
+
+function submitSell(){showMod('📦','Item Submitted!','Thank you! We\'ll review your item and WhatsApp you within 24 hours with confirmation and next steps.');}
+
+function regEvent(name){
+  document.getElementById('revent').value=name;
+  document.querySelector('.regwrap').scrollIntoView({behavior:'smooth'});
+}
+
+function submitReg(){
+  var name=document.getElementById('rname').value.trim();
+  if(!name){showToast('⚠️ Please enter your name');return;}
+  var ev=document.getElementById('revent').value;
+  showMod('🎉','You\'re Registered!','Thanks, '+name+'! Your spot for "'+ev+'" is reserved. Entry fee is paid in cash at the door. See you there! 🌿');
+}
+
+function checkPw(){
+  var v=document.getElementById('apw').value;
+  if(v===ADMIN_PW){
+    document.getElementById('alog').style.display='none';
+    document.getElementById('apanel').classList.add('on');
+    document.getElementById('pwerr').style.display='none';
+    renderAdmin();
+  }else{
+    document.getElementById('pwerr').style.display='block';
+    document.getElementById('apw').value='';
+    document.getElementById('apw').focus();
+  }
+}
+
+function doLogout(){
+  document.getElementById('alog').style.display='block';
+  document.getElementById('apanel').classList.remove('on');
+  document.getElementById('apw').value='';
+  showToast('🔒 Admin locked');
+}
+
+function addItem(){
+  var name=document.getElementById('nn').value.trim();
+  var cat=document.getElementById('nc').value;
+  var price=parseInt(document.getElementById('np').value);
+  var desc=document.getElementById('nd').value.trim();
+  var emoji=document.getElementById('ne').value;
+  var badge=document.getElementById('nb').value.trim();
+  if(!name||!price||!desc){showToast('⚠️ Please fill in name, price & description');return;}
+  items.push({id:uid++,name:name,cat:cat,price:price,desc:desc,emoji:emoji,badge:badge||null,bg:rbg(cat)});
+  document.getElementById('nn').value='';
+  document.getElementById('np').value='';
+  document.getElementById('nd').value='';
+  document.getElementById('nb').value='';
+  renderAdmin();
+  showToast('✅ "'+name+'" added to shop!');
+}
+
+function markSold(id){
+  var p=null;for(var i=0;i<items.length;i++){if(items[i].id===id){p=items[i];break;}}
+  if(!p)return;
+  var row=document.getElementById('ar-'+id);
+  if(row){row.classList.add('slideout');setTimeout(function(){items=items.filter(function(x){return x.id!==id;});renderAdmin();showToast('🎉 "'+p.name+'" marked as sold!');},350);}
+}
+
+function delItem(id){
+  var p=null;for(var i=0;i<items.length;i++){if(items[i].id===id){p=items[i];break;}}
+  if(!p)return;
+  var row=document.getElementById('ar-'+id);
+  if(row){row.classList.add('slideout');setTimeout(function(){items=items.filter(function(x){return x.id!==id;});renderAdmin();showToast('🗑️ "'+p.name+'" deleted');},350);}
+}
+
+function renderAdmin(){
+  document.getElementById('icount').textContent=items.length;
+  var list=document.getElementById('alist');
+  if(!items.length){list.innerHTML='<div class="aempty">No items yet. Add your first item above! 👆</div>';return;}
+  var html='';
+  for(var i=0;i<items.length;i++){
+    var p=items[i];
+    html+='<div class="arow" id="ar-'+p.id+'">';
+    html+='<div class="aremoji">'+p.emoji+'</div>';
+    html+='<div class="arinfo"><strong>'+p.name+'</strong><span>'+p.cat+' · '+p.desc+(p.badge?' · 🏷️ '+p.badge:'')+'</span></div>';
+    html+='<div class="arprice">'+p.price+' AED</div>';
+    html+='<button class="bsold" onclick="markSold('+p.id+')">✅ Mark Sold</button>';
+    html+='<button class="bdel" onclick="delItem('+p.id+')">🗑️ Delete</button>';
+    html+='</div>';
+  }
+  list.innerHTML=html;
+}
+
+function showMod(icon,title,msg){
+  document.getElementById('mi').textContent=icon;
+  document.getElementById('mt').textContent=title;
+  document.getElementById('mm').textContent=msg;
+  document.getElementById('modal').classList.add('on');
+}
+function closeMod(){document.getElementById('modal').classList.remove('on');}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeMod();});
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  setTimeout(function(){t.classList.remove('on');},3000);
+}
+
+(function(){
+  var c=document.getElementById('leaves');
+  var emojis=['🍃','🌿','🍂','♻️','🌱'];
+  for(var i=0;i<12;i++){
+    var d=document.createElement('div');d.className='leaf';
+    d.textContent=emojis[i%emojis.length];
+    d.style.left=(Math.random()*100)+'vw';
+    d.style.animationDuration=(15+Math.random()*20)+'s';
+    d.style.animationDelay=(Math.random()*20)+'s';
+    d.style.fontSize=(1.2+Math.random()*1.5)+'rem';
+    c.appendChild(d);
+  }
+})();
+
+renderShop();
+</script>
+</body>
+</html>
